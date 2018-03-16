@@ -20,11 +20,33 @@ srun -t2:30:00 --mem=5000 --gres=gpu:1 --pty /bin/bash
 
 . ./prince_slurm_bootstrap.sh install
 cd experiments/cifar10/
-tensorboard tensorboard --logdir=tb_logs/ > ./tensorboard.log 2>&1 &
 python main.py --epoch 1
 ```
 
-And then you can open a tunnel from your terminal and look at the tensorboard at http://localhost:6006/
+After we are sure that our main script works, we can start create automated experiments with
+`create_experiment_jobs.py` scripts
+
 ```
-ssh -L 6006:localhost:6006 prince
+cd ../
+python create_experiment_jobs.py --debug
 ```
+if they all look nice then you can create the experiment folder. and submit the jobs
+```
+python create_experiment_jobs.py
+bash /scratch/ue225/my_project/exps/cifar10/cifarLR_03.26/submit_all.sh
+```
+which would output something like this
+
+
+Let say you wanna define a new experiment. You would do by creating a new folder `experiments/new_folder/` and a `experiments/new_folder/main.py`script that is intended to be run. The main.py script should accept
+`--log_folder` and `--conf_file` flags at minimum. Then you can change `exp_name` at `experiments/default_conf.yaml` to `new_folder` and create new experiments.
+
+## Features
+- with conf.yaml file seamless argParser generation. Write the conf read and overwrite with cli args.
+- Customizable `eval-prefixes` which enables defining programatic eval-able arguments.
+  i.e. the string '+range(5)' would be evaluated and read as the list.
+- configuration copy to the experiment folder such that you can always change experiments default_args after submission
+- `ClassificationTrainer`/`ClassificationTester` which wraps the main training/testing
+functionalities and provides hooks for loggers.
+- tensorboardX utils and examples.
+- Multiple experiment definitions through yaml lists.

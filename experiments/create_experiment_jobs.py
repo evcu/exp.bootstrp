@@ -58,7 +58,9 @@ cd $HOME/M.Sc.thesis/experiments/{args.exp_name}/
         list_of_jobs.append(file_path)
         if is_debug:
             print(f'File_path is: {file_path}')
+            print(f'FILE_START_______________')
             print(script)
+            print(f'EOF______________________')
         else:
             print(f'File: {file_path}',end=' ')
             with open(file_path,'w') as f:

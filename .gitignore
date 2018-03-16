@@ -1,1 +1,4 @@
 *.pyc
+experiments/data/
+*.log
+*tb_logs

@@ -13,6 +13,6 @@ use_cuda: True
 unit_id: 0
 layer: conv1
 
-log_freq: 50
+log_freq: 100
 log_folder: ./tb_logs/
 print_progress: True
