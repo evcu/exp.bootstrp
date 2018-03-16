@@ -42,14 +42,15 @@ Let say you wanna define a new experiment. You would do by creating a new folder
 `--log_folder` and `--conf_file` flags at minimum. Then you can change `exp_name` at `experiments/default_conf.yaml` to `new_folder` and create new experiments.
 
 ## Features
-- with conf.yaml file seamless argParser generation. Write the conf read and overwrite with cli args.
-- Customizable `eval-prefixes` which enables defining programatic eval-able arguments.
+- [read_yaml_args](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_utils.py#L224) reads conf.yaml and creates a type-checked argParser out of the definition. Write the conf, read and overwrite with cli args.
+- [Customizable eval-prefixes](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_utils.py#L175) inside yaml file, which enables defining programatic eval-able arguments.
   i.e. the string '+range(5)' would be evaluated and read as the list.
-- configuration copy to the experiment folder such that you can always change experiments default_args after submission
-- `ClassificationTrainer`/`ClassificationTester` which wraps the main training/testing
+- configuration [copy to the experiment folder](https://github.com/evcu/exp.bootstrp/blob/master/experiments/create_experiment_jobs.py#L34) such that you can always change experiments default_args after submission
+- [ClassificationTrainer](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_utils.py#L83)/[ClassificationTester](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_utils.py#L9) which wraps the main training/testing
 functionalities and provides hooks for loggers.
-- tensorboardX utils and examples.
-- Multiple experiment definitions through yaml lists.
+- tensorboardX [logging utils](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_loggers.py) and examples.
+- [convNetgeneric](https://github.com/evcu/exp.bootstrp/blob/master/experiments/exp_models.py#L67) implementation
+- [Multiple experiment definitions](https://github.com/evcu/exp.bootstrp/blob/master/experiments/default_conf.yaml#L6) through yaml lists.
 
 ## Visualizing Tensorboard Events
 there are several options
