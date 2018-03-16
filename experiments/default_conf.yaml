@@ -1,4 +1,4 @@
-dest_folder: /scratch/ue225/my_project/exps/
+dest_folder: /scratch/NET_ID/my_project/exps/
 exp_name: cifar10
 exp_tag: cifarLR_03.26
 debug: False
@@ -18,4 +18,4 @@ sbatch_flags:
   time: 100
   mem: 6GB
   mail-type: END
-  mail-user: ue225@nyu.edu
+  mail-user: NET_ID@nyu.edu

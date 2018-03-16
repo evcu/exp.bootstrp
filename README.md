@@ -1,6 +1,10 @@
 # exp.bootstrp
 This repo is a bootstrap for experiments and includes helper functions scripts for pytorch training and slurm job scheduler.
 
+**Basic idea**:
+Create a python script(experiment) which accepts command line arguments.
+Provide arg_lists and generate slurm_jobs using the cross product of the given arg lists.
+
 ## Quick Start
 First thing setup your [ssh workflow](https://evcu.github.io/notes/ssh-setup-notes/). Then lets kick-start our experiment.
 
@@ -24,7 +28,12 @@ python main.py --epoch 1
 ```
 
 After we are sure that our main script works, we can start create automated experiments with
-`create_experiment_jobs.py` scripts
+`create_experiment_jobs.py` scripts. First thing to do is updating some of the SLURM fields under [experiments/default_conf.yaml](https://github.com/evcu/exp.bootstrp/blob/master/experiments/default_conf.yaml).
+Replace `NET_ID` with you net_id for example if you are a fellow NYU student and using prince. You may need to completely change this file according to your needs if you are working in another system or have different requirements.
+
+![log](img/args.png)
+
+Now we can generate experiment scripts.
 
 ```bash
 cd ../
@@ -69,3 +78,6 @@ and read your results
 ![log](img/tb1.png)
 ![log](img/tb2.png)
 ![log](img/tb3.png)
+
+## Contribution
+I am excited to collaborate and learn from you if you figured out better ways experimenting or wanna add text/code to this repo. Please create an issue or reach_out to me.
