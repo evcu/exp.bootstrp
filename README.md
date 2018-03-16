@@ -33,6 +33,8 @@ Replace `NET_ID` with you net_id for example if you are a fellow NYU student and
 
 ![log](img/args.png)
 
+Note that each element of the `experiment` key in the yaml file is a dictionary itself involves argument lists for `<exp_name>/main.py`. Each of the values in these argument lists are cross-product with others in the dictionary to generate all possible combinations.
+
 Now we can generate experiment scripts.
 
 ```bash
