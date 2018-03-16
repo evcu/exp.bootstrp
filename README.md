@@ -30,11 +30,14 @@ After we are sure that our main script works, we can start create automated expe
 cd ../
 python create_experiment_jobs.py --debug
 ```
+
 if they all look nice then you can create the experiment folder. and submit the jobs
+
 ```bash
 python create_experiment_jobs.py
 bash /scratch/ue225/my_project/exps/cifar10/cifarLR_03.26/submit_all.sh
 ```
+
 which would output something like this
 
 ![log](img/console.png)
