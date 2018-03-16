@@ -7,8 +7,6 @@ if [[ $1 == "install" ]]; then
   pip3 install --user git+https://github.com/evcu/pytorchpruner
 fi
 
-cd $HOME/M.Sc.thesis/
-
 cat<<EOF
 1.Run the tensorboard first on the gpu instance and optionally background it
   tensorboard tensorboard --logdir=tb_logs/ > ./tensorboard.log 2>&1 &

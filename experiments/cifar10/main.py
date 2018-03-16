@@ -18,7 +18,7 @@ from exp_utils import ClassificationTrainer,ClassificationTester,eval_if_prefixe
 from exp_models import ConvNet_generic,weight_init_xaivier_filtered
 from exp_dataloaders import getDataLoader
 from exp_loggers import hookEnabler,add_writer_hook
-from exp_loggers import create_tb_logger,chain_logger_funs,stdout_print,get_batch_loss_logger
+from exp_loggers import create_tb_logger,stdout_print,get_batch_loss_logger
 
 def run_experiment(args,log_folder_name,update_lr=True,write_graph=False):
     torch.set_default_tensor_type('torch.FloatTensor')
