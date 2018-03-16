@@ -1,0 +1,17 @@
+dest_folder: /scratch/ue225/my_project/exps/
+exp_name: cifar10
+exp_tag: cifarLR_03.26
+debug: False
+eval_prefix: +
+experiments:
+  - layer: conv1
+    unit_id: +[i**2 for i in range(2,5,2)]
+    lr: [0.1,0.01]
+
+sbatch_flags:
+  gres: gpu:1
+  nodes: 1
+  time: 100
+  mem: 6GB
+  mail-type: END
+  mail-user: ue225@nyu.edu
