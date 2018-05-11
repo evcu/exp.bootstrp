@@ -28,3 +28,7 @@ And then you can open a tunnel from your terminal and look at the tensorboard at
 ```
 ssh -L 6006:localhost:6006 prince
 ```
+
+## TODO
+- change create_experiments such that maybe the defaults included in the experiment.yaml and dumped.
+- Source code needs to be copied!
