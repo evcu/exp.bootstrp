@@ -25,12 +25,13 @@ def create_experiment(args,folder_path,script_name='job_script',is_debug=False):
     for i,exp in enumerate(args.experiments):
         log_folder = f'{folder_path}tb_logs/'
 
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        exp_dir_path = os.path.join(dir_path,args.exp_name)
+        def_conf_path = os.path.join(exp_dir_path,'default_conf.yaml')
 
         if not is_debug:
             os.makedirs(os.path.dirname(folder_path), exist_ok=True)
             os.makedirs(f'{folder_path}stderrout',exist_ok=True)
-            dir_path = os.path.dirname(os.path.realpath(__file__))
-            def_conf_path = os.path.join(dir_path,args.exp_name,'default_conf.yaml')
             shutil.copy(def_conf_path,folder_path)
 
         main_script = create_python_calls(exp,log_folder,
@@ -50,7 +51,7 @@ def create_experiment(args,folder_path,script_name='job_script',is_debug=False):
 
 module load python3/intel/3.6.3
 module load cuda/9.0.176
-cd $HOME/M.Sc.thesis/experiments/{args.exp_name}/
+cd {exp_dir_path}
 """
 
         script = f'{script_prep}\n{main_script}\n'
@@ -58,7 +59,9 @@ cd $HOME/M.Sc.thesis/experiments/{args.exp_name}/
         list_of_jobs.append(file_path)
         if is_debug:
             print(f'File_path is: {file_path}')
+            print(f'FILE_START_______________')
             print(script)
+            print(f'EOF______________________')
         else:
             print(f'File: {file_path}',end=' ')
             with open(file_path,'w') as f:

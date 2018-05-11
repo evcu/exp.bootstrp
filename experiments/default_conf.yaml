@@ -1,12 +1,16 @@
-dest_folder: /scratch/ue225/my_project/exps/
+dest_folder: /scratch/NET_ID/my_project/exps/
 exp_name: cifar10
 exp_tag: cifarLR_03.26
 debug: False
 eval_prefix: +
 experiments:
   - layer: conv1
-    unit_id: +[i**2 for i in range(2,5,2)]
+    unit_id: +[i*2 for i in range(2)]
     lr: [0.1,0.01]
+  - layer: fc1
+    unit_id: +[i*2 for i in range(2,4)]
+    use_batchnorm: False
+    nonlinearity: tanh
 
 sbatch_flags:
   gres: gpu:1
@@ -14,4 +18,4 @@ sbatch_flags:
   time: 100
   mem: 6GB
   mail-type: END
-  mail-user: ue225@nyu.edu
+  mail-user: NET_ID@nyu.edu
